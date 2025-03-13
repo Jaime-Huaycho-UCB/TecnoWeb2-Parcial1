@@ -46,11 +46,12 @@ nodemon index.js
  ┃ ┣ 📂 Producto
  ┃ ┣ 📂 Contador
  ┃ ┣ 📂 Util
+ ┃ ┣ 📂 Middleware
  ┣ 📜 index.js
  ┣ 📜 package.json
  ┣ 📜 .env
  ┣ 📜 README.md
-```
+
 
 ---
 
@@ -234,6 +235,31 @@ nodemon index.js
 ```
 
 ---
+
+
+# 📈 Middleware de Conteo de Operaciones
+
+### 📊 **Operaciones**
+| Método  | Endpoint       | Descripción |
+|---------|---------------|-------------|
+| **GET** | `/operaciones` | Obtiene la cantidad de veces que se han ejecutado operaciones en la API |
+
+#### 📌 `GET /operaciones`
+Este endpoint devuelve el número total de veces que se han realizado operaciones `GET`, `POST`, `PUT` y `DELETE` en la API.
+
+##### 🔹 Respuesta:
+```json
+{
+  "code": 200,
+  "mensaje": "Conteo de operaciones en el backend",
+  "operaciones": {
+    "GET": 15,
+    "POST": 8,
+    "PUT": 5,
+    "DELETE": 3
+  }
+}
+
 
 ## 🚨 Manejador de Errores
 Si un recurso no existe o hay errores en la solicitud, se devuelve un código con un mensaje descriptivo.
