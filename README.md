@@ -247,20 +247,3 @@ Si un recurso no existe o hay errores en la solicitud, se devuelve un código co
 ```
 
 ---
-
-## 📢 Contribución
-Si deseas contribuir:
-1. **Fork** al repositorio.
-2. Crea una rama: `git checkout -b mi-nueva-funcionalidad`
-3. Confirma los cambios: `git commit -m "Nueva funcionalidad agregada"`
-4. Envía un **pull request**.
-
----
-
-## ✨ Autor
-- **Tu Nombre**  
-- 📧 Contacto: [tuemail@example.com](mailto:tuemail@example.com)
-
----
-
-¡Gracias por usar esta API! 🚀
