@@ -1,9 +1,9 @@
 # API de Gestión de Usuarios, Productos y Contadores
 
 ## 📌 Descripción
-Esta API proporciona endpoints para gestionar usuarios y productos mediante operaciones CRUD (Crear, Leer, Actualizar y Eliminar). Además, cuenta con un endpoint adicional para obtener el número total de usuarios y productos registrados.
+Esta API permite gestionar usuarios y productos con operaciones CRUD (Crear, Leer, Actualizar y Eliminar). Además, proporciona un endpoint para contar los registros de la base de datos.
 
-La API está desarrollada con **Node.js** y **Express**, y utiliza **MongoDB** como base de datos, manejada a través de **Mongoose**.
+Está desarrollada con **Node.js** y **Express**, y utiliza **MongoDB** con **Mongoose**.
 
 ---
 
@@ -11,8 +11,8 @@ La API está desarrollada con **Node.js** y **Express**, y utiliza **MongoDB** c
 
 ### 1️⃣ Clonar el repositorio
 ```sh
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_PROYECTO>
+git https://github.com/Jaime-Huaycho-UCB/TecnoWeb2-Parcial1.git
+cd TecnoWeb2-Parcial1
 ```
 
 ### 2️⃣ Instalar dependencias
@@ -21,17 +21,16 @@ npm install
 ```
 
 ### 3️⃣ Configurar variables de entorno
-Crear un archivo `.env` en la raíz del proyecto con la conexión a MongoDB, por ejemplo:
+Crear un archivo `.env` en la raíz con la conexión a MongoDB:
 ```
 MONGODB_URI=mongodb://localhost:27017/mi_base_de_datos
 ```
 
 ### 4️⃣ Iniciar el servidor
-Ejecutar el siguiente comando para iniciar la API:
 ```sh
 node index.js
 ```
-O si tienes **nodemon** instalado:
+O con **nodemon**:
 ```sh
 nodemon index.js
 ```
@@ -44,22 +43,10 @@ nodemon index.js
 📂 proyecto
  ┣ 📂 src
  ┃ ┣ 📂 Usuario
- ┃ ┃ ┣ 📜 Usuario.controller.js  # Controlador de usuarios
- ┃ ┃ ┣ 📜 Usuario.service.js      # Lógica de negocio de usuarios
- ┃ ┃ ┣ 📜 Usuario.schema.js       # Modelo de datos de usuario
- ┃ ┃ ┣ 📜 Usuario.routes.js       # Rutas de usuarios
  ┃ ┣ 📂 Producto
- ┃ ┃ ┣ 📜 Producto.controller.js  # Controlador de productos
- ┃ ┃ ┣ 📜 Producto.service.js      # Lógica de negocio de productos
- ┃ ┃ ┣ 📜 Producto.schema.js       # Modelo de datos de productos
- ┃ ┃ ┣ 📜 Producto.routes.js       # Rutas de productos
  ┃ ┣ 📂 Contador
- ┃ ┃ ┣ 📜 Contador.controller.js  # Controlador de contadores
- ┃ ┃ ┣ 📜 Contador.service.js      # Lógica de negocio de contadores
- ┃ ┃ ┣ 📜 Contador.routes.js       # Ruta de contadores
  ┃ ┣ 📂 Util
- ┃ ┃ ┣ 📜 HttpError.js             # Manejador de errores
- ┣ 📜 index.js                     # Punto de entrada de la aplicación
+ ┣ 📜 index.js
  ┣ 📜 package.json
  ┣ 📜 .env
  ┣ 📜 README.md
@@ -70,14 +57,15 @@ nodemon index.js
 ## 🔗 Endpoints Disponibles
 
 ### 🧑‍💼 **Usuarios**
-| Método | Endpoint     | Descripción |
-|--------|-------------|-------------|
-| **GET**    | `/usuarios`      | Obtiene la lista de usuarios registrados |
-| **POST**   | `/usuarios`      | Crea un nuevo usuario |
-| **PUT**    | `/usuarios`      | Edita un usuario existente |
-| **DELETE** | `/usuarios/:id`  | Elimina un usuario por ID |
+| Método  | Endpoint       | Descripción |
+|---------|---------------|-------------|
+| **GET**  | `/usuarios`      | Obtiene todos los usuarios |
+| **POST** | `/usuarios`      | Crea un nuevo usuario |
+| **PUT**  | `/usuarios/:id`  | Edita un usuario por ID |
+| **DELETE** | `/usuarios/:id` | Elimina un usuario por ID |
 
-#### 🔹 Ejemplo de Respuesta - `GET /usuarios`
+#### 📌 `GET /usuarios`
+##### 🔹 Respuesta:
 ```json
 {
   "code": 200,
@@ -92,7 +80,8 @@ nodemon index.js
 }
 ```
 
-#### 🔹 Ejemplo de Petición - `POST /usuarios`
+#### 📌 `POST /usuarios`
+##### 🔹 Petición:
 ```json
 {
   "nombre": "Ana López",
@@ -100,11 +89,11 @@ nodemon index.js
   "ocupacion": "Diseñadora"
 }
 ```
-#### 🔹 Respuesta Esperada
+##### 🔹 Respuesta:
 ```json
 {
   "code": 201,
-  "mensaje": "El usuario se registró exitosamente",
+  "mensaje": "Usuario registrado",
   "usuario": {
     "_id": "65a4f98d3b6c4c001f4e52da",
     "nombre": "Ana López",
@@ -114,17 +103,50 @@ nodemon index.js
 }
 ```
 
+#### 📌 `PUT /usuarios/:id`
+##### 🔹 Petición:
+```json
+{
+  "nombre": "Ana López",
+  "edad": 29,
+  "ocupacion": "Arquitecta"
+}
+```
+##### 🔹 Respuesta:
+```json
+{
+  "code": 200,
+  "mensaje": "Usuario actualizado",
+  "usuario": {
+    "_id": "65a4f98d3b6c4c001f4e52da",
+    "nombre": "Ana López",
+    "edad": 29,
+    "ocupacion": "Arquitecta"
+  }
+}
+```
+
+#### 📌 `DELETE /usuarios/:id`
+##### 🔹 Respuesta:
+```json
+{
+  "code": 200,
+  "mensaje": "Usuario eliminado correctamente"
+}
+```
+
 ---
 
 ### 📦 **Productos**
-| Método | Endpoint     | Descripción |
-|--------|-------------|-------------|
-| **GET**    | `/productos`      | Obtiene la lista de productos registrados |
-| **POST**   | `/productos`      | Crea un nuevo producto |
-| **PUT**    | `/productos`      | Edita un producto existente |
-| **DELETE** | `/productos/:id`  | Elimina un producto por ID |
+| Método  | Endpoint         | Descripción |
+|---------|-----------------|-------------|
+| **GET**  | `/productos`      | Obtiene todos los productos |
+| **POST** | `/productos`      | Crea un nuevo producto |
+| **PUT**  | `/productos/:id`  | Edita un producto por ID |
+| **DELETE** | `/productos/:id` | Elimina un producto por ID |
 
-#### 🔹 Ejemplo de Respuesta - `GET /productos`
+#### 📌 `GET /productos`
+##### 🔹 Respuesta:
 ```json
 {
   "code": 200,
@@ -139,7 +161,8 @@ nodemon index.js
 }
 ```
 
-#### 🔹 Ejemplo de Petición - `POST /productos`
+#### 📌 `POST /productos`
+##### 🔹 Petición:
 ```json
 {
   "nombre": "Celular Samsung",
@@ -147,11 +170,11 @@ nodemon index.js
   "categoria": "Electrónica"
 }
 ```
-#### 🔹 Respuesta Esperada
+##### 🔹 Respuesta:
 ```json
 {
   "code": 201,
-  "mensaje": "El producto se registró exitosamente",
+  "mensaje": "Producto registrado",
   "producto": {
     "_id": "65a4f9cd3b6c4c001f4e52dc",
     "nombre": "Celular Samsung",
@@ -161,14 +184,47 @@ nodemon index.js
 }
 ```
 
+#### 📌 `PUT /productos/:id`
+##### 🔹 Petición:
+```json
+{
+  "nombre": "Celular Samsung Galaxy",
+  "precio": 750,
+  "categoria": "Electrónica"
+}
+```
+##### 🔹 Respuesta:
+```json
+{
+  "code": 200,
+  "mensaje": "Producto actualizado",
+  "producto": {
+    "_id": "65a4f9cd3b6c4c001f4e52dc",
+    "nombre": "Celular Samsung Galaxy",
+    "precio": 750,
+    "categoria": "Electrónica"
+  }
+}
+```
+
+#### 📌 `DELETE /productos/:id`
+##### 🔹 Respuesta:
+```json
+{
+  "code": 200,
+  "mensaje": "Producto eliminado correctamente"
+}
+```
+
 ---
 
 ### 📊 **Contadores**
-| Método | Endpoint     | Descripción |
-|--------|-------------|-------------|
+| Método  | Endpoint       | Descripción |
+|---------|---------------|-------------|
 | **GET** | `/contadores` | Obtiene el número total de usuarios y productos |
 
-#### 🔹 Ejemplo de Respuesta - `GET /contadores`
+#### 📌 `GET /contadores`
+##### 🔹 Respuesta:
 ```json
 {
   "code": 200,
@@ -180,23 +236,23 @@ nodemon index.js
 ---
 
 ## 🚨 Manejador de Errores
-La API utiliza `HttpError.js` para manejar errores personalizados. Si un recurso no es encontrado o hay un error en la solicitud, se devuelve un código de error junto con un mensaje descriptivo.
+Si un recurso no existe o hay errores en la solicitud, se devuelve un código con un mensaje descriptivo.
 
-Ejemplo de error al obtener usuarios cuando no hay registros:
+#### 📌 Ejemplo de error cuando un usuario no existe:
 ```json
 {
-  "code": 400,
-  "mensaje": "No hay usuarios registrados"
+  "code": 404,
+  "mensaje": "Usuario no encontrado"
 }
 ```
 
 ---
 
 ## 📢 Contribución
-Si deseas contribuir al desarrollo de esta API:
-1. Haz un **fork** del repositorio.
-2. Crea una nueva rama con tu funcionalidad: `git checkout -b mi-nueva-funcion`
-3. Realiza cambios y confirma: `git commit -m "Agregada nueva funcionalidad"`
+Si deseas contribuir:
+1. **Fork** al repositorio.
+2. Crea una rama: `git checkout -b mi-nueva-funcionalidad`
+3. Confirma los cambios: `git commit -m "Nueva funcionalidad agregada"`
 4. Envía un **pull request**.
 
 ---
