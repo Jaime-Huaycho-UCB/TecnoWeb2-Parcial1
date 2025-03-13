@@ -259,7 +259,7 @@ Este endpoint devuelve el número total de veces que se han realizado operacione
     "DELETE": 3
   }
 }
-
+---
 
 ## 🚨 Manejador de Errores
 Si un recurso no existe o hay errores en la solicitud, se devuelve un código con un mensaje descriptivo.
