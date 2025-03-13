@@ -26,7 +26,7 @@ class UsuarioService {
     async editarUsuario(data) {
         const usuario = await Usuario.findById(data.id);
         usuario.nombre = data.nombre;
-        usuario.edad = data.nombre;
+        usuario.edad = data.edad;
         usuario.ocupacion = data.ocupacion;
         const usuarioEditado = await usuario.save();
         return {

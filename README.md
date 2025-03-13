@@ -104,10 +104,11 @@ nodemon index.js
 }
 ```
 
-#### 📌 `PUT /usuarios/:id`
+#### 📌 `PUT /usuarios`
 ##### 🔹 Petición:
 ```json
 {
+  "id": "kfeinu383nis93bq8gdhfb",
   "nombre": "Ana López",
   "edad": 29,
   "ocupacion": "Arquitecta"
@@ -185,10 +186,11 @@ nodemon index.js
 }
 ```
 
-#### 📌 `PUT /productos/:id`
+#### 📌 `PUT /productos`
 ##### 🔹 Petición:
 ```json
 {
+  "id": "jab29bd2u3be73f7gbaga6cv3",
   "nombre": "Celular Samsung Galaxy",
   "precio": 750,
   "categoria": "Electrónica"
